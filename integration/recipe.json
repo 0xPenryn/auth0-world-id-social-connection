@@ -1,11 +1,11 @@
 {
-  "authorizationURL": "https://example.com/oauth/authorize",
-  "tokenURL": "https://example.com/oauth/token",
+  "authorizationURL": "https://id.worldcoin.org/authorize",
+  "tokenURL": "https://id.worldcoin.org/token",
   "permissions": [
     {
-      "scope": "example",
-      "label": "Example Permission",
-      "required": false,
+      "scope": "openid",
+      "label": "OpenID",
+      "required": true,
       "default": true
     }
   ],
