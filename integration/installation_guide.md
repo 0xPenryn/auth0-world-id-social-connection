@@ -3,33 +3,22 @@ Sign in with Worldcoin allows users to verify that they're a unique human withou
 ## Prerequisites
 
 1. An Auth0 account and tenant. [Sign up for free](https://auth0.com/signup).
-2. Sign up for the [World ID SDK](https://developer.worldcoin.org/).
-   * You will need the [World App](https://worldcoin.org/download) to sign in to the Developer Portal.
-   * Alternatively, you can follow the instructions below for the **`/register` API Endpoint** without creating an account on the Worldcoin Developer Portal.
+2. A [Worldcoin Developer Portal](https://developer.worldcoin.org) account. New users can [sign up for free](https://worldcoin.org/auth0-invite).
+   * You will need to download the [World App](https://worldcoin.org/download) and complete phone number verification in order to sign in.
 
 ## Set up World ID
 
-There are two methods to set up World ID: the **Developer Portal** and the **`/register` API Endpoint**.
-
-**Developer Portal:**
-1. Create a new app in the "Select App" menu.
-2. Name your app something that your users will recognize -- it's shown to users in the World App when they're signing in.
-3. Select **Staging** or **Production** to match your Auth0 tenant.
-   * For **Staging**, you must use the [Worldcoin Simulator](https://simulator.worldcoin.org) to sign in. Please note that it may take up to 5 minutes after creating an identity in the Simulator for sign-in to succeed.
+1. Navigate to the [Worldcoin Developer Portal](https://developer.worldcoin.org).
+2. Create a new app in the "Select App" menu.
+3. Name your app something that your users will recognize -- it's shown to users in the World App when they're signing in.
+4. Select **Staging** or **Production** to match your Auth0 tenant.
+   * For **Staging**, you must use the [Worldcoin Simulator](https://simulator.worldcoin.org) to sign in. This allows you to create temporary identities for testing purposes. Please note that it may take up to 5 minutes after creating an identity in the Simulator for sign-in to succeed.
    * For **Production**, you must use the [World App](https://worldcoin.org/download) to sign in. 
-4. Select **Cloud**.
+5. Select **Cloud**.
    * "On-chain" apps will _not_ work for Sign-in use cases.
-5. Navigate to the **Sign In** configuration section.
-6. Add a Redirect URI to `https://{domain}/login/callback`, replacing `{domain}` with your Auth0 tenant domain.
-7. Note the `Client ID` and `Client Secret`, you'll need these when configuring the Connection in Auth0.
-
-**`/register` API Endpoint:**
-1. Follow the instructions to [register a Sign-in App via the API](https://docs.worldcoin.org/api/sign-in-reference#register-app).
-   * Set `client_name` to something that your users will recognize -- it's shown to users in the World App when they're signing in.
-   * Set `logo_uri` to a link to your application's logo.
-   * Set `redirect_uris` to `["https://{domain}/login/callback"]`, replacing `{domain}` with your Auth0 tenant domain.
-   * Leave `application_type` and `grant_types` as the default values.
-2. Note the `Client ID` and `Client Secret` in the response, you'll need these when configuring the Connection in Auth0.
+6. Navigate to the **Sign In** configuration section.
+7. Add a Redirect URI to `https://{domain}/login/callback`, replacing `{domain}` with your Auth0 tenant domain.
+8. Note the `Client ID` and `Client Secret`, you'll need these when configuring the Connection in Auth0.
 
 ## Add the Connection
 
@@ -39,6 +28,7 @@ There are two methods to set up World ID: the **Developer Portal** and the **`/r
    * **Client ID** and **Client Secret** must use the values found in the Worldcoin Developer Portal. **Client ID** will begin with "app_staging_" or "app_".
 4. Select the **Permissions** needed for your applications.
 5. Choose and configure whether to sync user profile attributes at each login.
+   * It is recommended to enable this option, as a user may receive additional proof-of-personhood credentials after their first login.
 6. Select **Create**.
 7. In the **Applications** view, choose the Applications that should use this Connection to log in.
 
