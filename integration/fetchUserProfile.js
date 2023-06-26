@@ -9,7 +9,7 @@ module.exports = function fetchUserProfile(accessToken, context, callback) {
     },
     (error, response, body) => {
       if (error) {
-        return callback(error);
+        return callback(new Error("Call to get userinfo failed."));
       }
 
       if (response.statusCode >= 300) {
